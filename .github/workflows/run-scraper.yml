@@ -38,6 +38,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
+            # Set remote to use PAT explicitly
+            git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/OrgesKreka/Peizazhe.Epub.git
+
             git commit -m "Update repo via GitHub Actions"
             git push
           fi
