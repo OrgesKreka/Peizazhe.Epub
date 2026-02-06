@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern eReader</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <link rel="stylesheet" href="frontend/style.css"/>
+</head>
+<body>
+
+<div class="columns is-gapless">
+<aside class="column is-3 sidebar p-0 has-background-light">
+    <div class="p-5">
+        <h1 class="title is-4">My Library</h1>
+    </div>
+    
+    <ul id="book-list" class="menu-list px-4 pb-4">
+        </ul>
+
+    <div id="scroll-anchor" style="height: 20px;"></div>
+</aside>
+
+    <main class="column main-content p-6">
+        <div id="viewer-container" class="box">
+            <div id="viewer"></div>
+        </div>
+
+        <div class="buttons is-centered mt-4">
+            <button class="button is-link is-light" onclick="prevPage()">Previous</button>
+            <button class="button is-link" onclick="nextPage()">Next</button>
+        </div>
+    </main>
+</div>
+
+<script src="./frontend/reader.js"></script>
+</body>
+</html>

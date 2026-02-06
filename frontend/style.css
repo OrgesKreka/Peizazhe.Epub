@@ -1,0 +1,33 @@
+.sidebar {
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #dbdbdb;
+}
+
+/* Custom scrollbar for a cleaner look */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+#viewer { 
+height: 80vh; 
+width: 100%; 
+border: 1px solid #eee; 
+background: #fff; 
+}
+
+.sidebar { 
+    height: 100vh; 
+    overflow-y: auto; 
+    border-right: 1px solid #dbdbdb; 
+}
+
+.main-content { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+}
