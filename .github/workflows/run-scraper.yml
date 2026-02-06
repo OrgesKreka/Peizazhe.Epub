@@ -1,7 +1,7 @@
 name: CI - Run Scrapper
 
 on:
-  workflow_dispatch:    # manual run
+  workflow_dispatch:
   schedule:
     - cron: "0 3 * * 1" # every Monday at 03:00 UTC
 
@@ -9,13 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # ✅ Checkout using PAT
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Check out repository code
-        uses: actions/checkout@v2
-
+      # Set up .NET
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -30,15 +29,13 @@ jobs:
       - name: Run the project
         run: dotnet run --project ./backend/Peizazhet.Scraper/Peizazhet.Scraper/Peizazhet.Scraper.csproj --configuration Release --no-build
 
-      - name: Save new article
+      - name: Commit all changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          # only commit if there are changes
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Update repo via GitHub Actions"
             git push
-          fi
