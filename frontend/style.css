@@ -1,33 +1,168 @@
-.sidebar {
+:root {
+    --bg-sidebar: #121417;
+    --bg-viewer: #1a1d21;
+    --text-main: #d1d5db;
+    --accent: #4f46e5;
+}
+
+body {
+    background-color: var(--bg-viewer);
+    color: var(--text-main);
     height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar Container Adjustments */
+.menu-list {
+    padding-right: 1.5rem;
+}
+
+/* The LI Wrapper */
+.book-item-wrapper {
+    margin-bottom: 1.5rem !important;
+}
+
+/* The Main Flex Container */
+.book-link-container {
+    display: flex !important;
+    align-items: flex-start !important; /* Aligns icon with the top line of text */
+    background: transparent !important;
+    padding: 0 !important;
+    color: #9ca3af !important;
+}
+
+.book-link-container:hover, .book-link-container.is-active {
+    color: white !important;
+}
+
+/* Download Icon Styling */
+.download-action {
+    margin-right: 1.5rem;
+    padding-top: 4px; /* Tiny adjustment to center with first line */
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.download-action:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* Text Container */
+.book-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 100%;
+}
+
+.book-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.05rem;
+}
+
+.book-author {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.book-link-container.is-active .book-author {
+    color: #9ca3af;
+}
+
+/* Progress Bar */
+#progress-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    /* Width of the viewer column */
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    transition: width 0.1s;
+}
+
+.main-columns {
+    height: 100vh;
+    margin: 0 !important;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid #2d3139;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-inner {
+    padding: 2rem 1.5rem;
+    flex: 1;
     overflow-y: auto;
-    border-right: 1px solid #dbdbdb;
 }
 
-/* Custom scrollbar for a cleaner look */
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-
-#viewer { 
-height: 80vh; 
-width: 100%; 
-border: 1px solid #eee; 
-background: #fff; 
+.theme-switcher {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #2d3139;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
-.sidebar { 
-    height: 100vh; 
-    overflow-y: auto; 
-    border-right: 1px solid #dbdbdb; 
+.menu-list a {
+    color: #9ca3af;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
 }
 
-.main-content { 
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
+.menu-list a.is-active {
+    background-color: #24292f !important;
+    color: white !important;
+    border-left: 3px solid var(--accent);
+}
+
+/* Viewer */
+.viewer-column {
+    height: 100vh;
+    overflow-y: scroll;
+    /* Critical for continuous scroll */
+    padding: 0 !important;
+    scroll-behavior: smooth;
+}
+
+#viewer {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 6rem 2rem;
+}
+
+/* Theme Buttons */
+.theme-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.theme-dot.active {
+    border-color: var(--accent);
 }

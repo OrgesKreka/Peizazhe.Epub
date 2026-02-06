@@ -19,7 +19,7 @@ internal static class Program
         var articlesDbJsonFilePath = $@"{backendDirectory}\articles.db.json";
         var allArticlesLink = args.FirstOrDefault() ?? "https://peizazhe.com/arkivi/";
         var invalidFileNameChars = Path.GetInvalidFileNameChars(); // We use this to sanitize the fileNames
-    
+        
 // Custom CSS to format the author div content at the end of the article
         string authorCss = """
                             /* ============================================

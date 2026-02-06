@@ -1,40 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern eReader</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peizazhe eReader</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
-    <link rel="stylesheet" href="frontend/style.css"/>
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./frontend/style.css" />
+  </head>
+  <body>
+    <div id="progress-container"><div id="progress-bar"></div></div>
 
-<div class="columns is-gapless">
-<aside class="column is-3 sidebar p-0 has-background-light">
-    <div class="p-5">
-        <h1 class="title is-4">My Library</h1>
+    <div class="columns is-gapless main-columns">
+      <aside class="column is-3 sidebar">
+        <div class="sidebar-inner" id="sidebar-scroll">
+          <p
+            class="is-size-7 has-text-grey mb-4"
+            style="letter-spacing: 1.5px; font-weight: 600"
+          >
+            Artikujt e Peizazhe të fjalës
+          </p>
+          <ul id="book-list" class="menu-list"></ul>
+          <div id="scroll-anchor"></div>
+        </div>
+
+        <div class="theme-switcher">
+          <div
+            class="theme-dot"
+            style="background: #1a1d21"
+            onclick="setTheme('dark')"
+          ></div>
+          <div
+            class="theme-dot"
+            style="background: #f4ecd8"
+            onclick="setTheme('sepia')"
+          ></div>
+          <div
+            class="theme-dot"
+            style="background: #ffffff"
+            onclick="setTheme('light')"
+          ></div>
+        </div>
+      </aside>
+
+      <main class="column is-9 viewer-column" id="scroll-container">
+        <div id="viewer"></div>
+      </main>
     </div>
-    
-    <ul id="book-list" class="menu-list px-4 pb-4">
-        </ul>
 
-    <div id="scroll-anchor" style="height: 20px;"></div>
-</aside>
-
-    <main class="column main-content p-6">
-        <div id="viewer-container" class="box">
-            <div id="viewer"></div>
-        </div>
-
-        <div class="buttons is-centered mt-4">
-            <button class="button is-link is-light" onclick="prevPage()">Previous</button>
-            <button class="button is-link" onclick="nextPage()">Next</button>
-        </div>
-    </main>
-</div>
-
-<script src="./frontend/reader.js"></script>
-</body>
+    <script src="./frontend/reader.js"></script>
+  </body>
 </html>
