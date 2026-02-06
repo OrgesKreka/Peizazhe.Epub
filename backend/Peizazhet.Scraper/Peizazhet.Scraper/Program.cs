@@ -16,7 +16,7 @@ internal static class Program
         
         Console.WriteLine($"Working on: '{backendDirectory}'");
         
-        var articlesDbJsonFilePath = $@"{backendDirectory}/articles.db.json";
+        var articlesDbJsonFilePath = $"{backendDirectory}{Path.DirectorySeparatorChar}articles.db.json";
         var allArticlesLink = args.FirstOrDefault() ?? "https://peizazhe.com/arkivi/";
         var invalidFileNameChars = Path.GetInvalidFileNameChars(); // We use this to sanitize the fileNames
         
@@ -215,7 +215,7 @@ internal static class Program
             doc.AddSection(element.Title, newDocument.DocumentElement.OuterHtml);
 
 
-            await using var fs = new FileStream($@"{backendDirectory}/articles/{cleanTitle}.epub", FileMode.Create);
+            await using var fs = new FileStream($@"{backendDirectory}{Path.DirectorySeparatorChar}articles{Path.DirectorySeparatorChar}{cleanTitle}.epub", FileMode.Create);
             doc.Export(fs);
             
             Console.WriteLine($"{cleanTitle}.epub was saved successfully!");
