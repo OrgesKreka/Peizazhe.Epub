@@ -35,5 +35,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Get new article via GitHub Actions" || echo "No changes to commit"
-          git push
+          # only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update repo via GitHub Actions"
+            git push
+          fi
