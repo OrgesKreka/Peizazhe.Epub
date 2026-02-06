@@ -25,4 +25,4 @@ jobs:
         run: dotnet build ./backend/Peizazhet.Scraper/Peizazhet.Scraper.slnx --configuration Release --no-restore
 
       - name: Run the project
-        run: dotnet run ./backend/Peizazhet.Scraper/Peizazhet.Scraper/Peizazhet.Scraper.csproj --configuration Release --no-build
+        run: dotnet run --project ./backend/Peizazhet.Scraper/Peizazhet.Scraper/Peizazhet.Scraper.csproj --configuration Release --no-build
