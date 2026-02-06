@@ -1,0 +1,27 @@
+name: CI - Run Scrapper
+
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./backend/Peizazhet.Scraper/Peizazhet.Scraper.slnx
+
+      - name: Build the solution
+        run: dotnet build ./backend/Peizazhet.Scraper/Peizazhet.Scraper.slnx --configuration Release --no-restore
+
+      - name: Run the project
+        run: dotnet run ./backend/Peizazhet.Scraper/Peizazhet.Scraper/Peizazhet.Scraper.csproj --configuration Release --no-build
