@@ -219,6 +219,8 @@ internal static class Program
             doc.Export(fs);
             
             Console.WriteLine($"{cleanTitle}.epub was saved successfully!");
+            
+            element.FileName = $"{cleanTitle}.epub";
         }
 
         await UpdateDb(savedArticles, articlesToScrape, articlesDbJsonFilePath);
@@ -233,8 +235,8 @@ internal static class Program
         {
             WriteIndented = true
         };
-
-        var updatedJson = JsonSerializer.Serialize(savedArticles, options);
+        
+        var updatedJson = JsonSerializer.Serialize(savedArticles.OrderByDescending(x => x.PublishDateTime), options);
         await File.WriteAllTextAsync(articlesDbJsonFilePath, updatedJson);
     }
 
