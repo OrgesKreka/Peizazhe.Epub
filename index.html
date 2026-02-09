@@ -20,46 +20,37 @@
     />
     <link rel="stylesheet" href="./frontend/style.css" />
   </head>
-  <body>
+  <body class="theme-dark">
     <div id="progress-container"><div id="progress-bar"></div></div>
 
-    <div class="columns is-gapless main-columns">
-      <aside class="column is-3 sidebar">
-        <div class="sidebar-inner" id="sidebar-scroll">
-          <p
-            class="is-size-7 has-text-grey mb-4"
-            style="letter-spacing: 1.5px; font-weight: 600"
-          >
-            Artikujt e Peizazhe të fjalës
-          </p>
-          <ul id="book-list" class="menu-list"></ul>
-          <div id="scroll-anchor"></div>
-        </div>
-
-        <div class="theme-switcher">
-          <div
-            class="theme-dot"
-            style="background: #1a1d21"
-            onclick="setTheme('dark')"
-          ></div>
-          <div
-            class="theme-dot"
-            style="background: #f4ecd8"
-            onclick="setTheme('sepia')"
-          ></div>
-          <div
-            class="theme-dot"
-            style="background: #ffffff"
-            onclick="setTheme('light')"
-          ></div>
-        </div>
-      </aside>
-
-      <main class="column is-9 viewer-column" id="scroll-container">
-        <div id="viewer"></div>
-      </main>
+    <div class="mobile-navbar">
+        <div class="brand">Peizazhe</div>
+        <button class="burger-button" id="burger" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
+
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-inner" id="sidebar-scroll">
+                <p class="library-header">LIBRARY</p>
+                <ul id="book-list" class="menu-list"></ul>
+                <div id="scroll-anchor" style="height: 50px;"></div>
+            </div>
+
+            <div class="theme-switcher">
+                <div class="theme-dot" style="background: #1a1d21" onclick="setTheme('dark')" title="Dark"></div>
+                <div class="theme-dot" style="background: #f4ecd8" onclick="setTheme('sepia')" title="Sepia"></div>
+                <div class="theme-dot" style="background: #ffffff" onclick="setTheme('light')" title="Light"></div>
+            </div>
+        </aside>
+
+        <main class="viewer-column" id="scroll-container">
+            <div id="viewer"></div>
+        </main>
+    </div>
     <script src="./frontend/reader.js"></script>
   </body>
 </html>

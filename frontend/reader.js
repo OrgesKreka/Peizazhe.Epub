@@ -65,7 +65,6 @@ function loadNextBatch() {
     const textContainer = document.createElement("div");
     textContainer.className = "book-info";
 
- 
     textContainer.innerHTML = `
             <span class="book-title">${element.Title}</span>
             <span class="book-author">• ${element.Author}</span>
@@ -120,6 +119,10 @@ async function loadBook(url) {
     if (loadingStatus) loadingStatus.remove();
 
     setTheme(currentTheme); // Apply current UI theme to book
+
+    if (window.innerWidth <= 768) {
+      toggleMobileMenu();
+    }
   } catch (err) {
     viewerDiv.innerHTML = `<div class="notification is-danger">Failed to load: ${err.message}</div>`;
   }
@@ -165,3 +168,38 @@ scrollContainer.onscroll = () => {
 };
 
 init();
+
+function setTheme(t) {
+            currentTheme = t;
+            document.body.className = 'theme-' + t;
+            const config = themes[t];
+            if (rendition) {
+                rendition.themes.default({
+                    body: {
+                        "background-color": "transparent !important",
+                        "color": `${config.text} !important`,
+                        "font-family": "'Merriweather', serif !important",
+                        "font-size": "18px !important",
+                        "line-height": "1.8 !important",
+                    }
+                });
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById("sidebar").classList.toggle("is-mobile-active");
+            document.getElementById("burger").classList.toggle("is-active");
+            document.getElementById("sidebar-overlay").classList.toggle("is-active");
+        }
+
+        function closeMobileMenu() {
+            document.getElementById("sidebar").classList.remove("is-mobile-active");
+            document.getElementById("burger").classList.remove("is-active");
+            document.getElementById("sidebar-overlay").classList.remove("is-active");
+        }
+
+        scrollContainer.onscroll = () => {
+            const totalHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+            const progress = (scrollContainer.scrollTop / totalHeight) * 100;
+            document.getElementById("progress-bar").style.width = progress + "%";
+        };
