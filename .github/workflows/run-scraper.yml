@@ -8,12 +8,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       # ✅ Checkout using PAT
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
           ref: main
+          fetch-depth: 0
 
       # Set up .NET
       - name: Set up .NET
@@ -38,9 +42,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            # Set remote to use PAT explicitly
-            git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/OrgesKreka/Peizazhe.Epub.git
-
             git commit -m "Update repo via GitHub Actions"
-            git push
+            git push https://x-access-token:${PAT_TOKEN}@github.com/OrgesKreka/Peizazhe.Epub.git main
           fi
