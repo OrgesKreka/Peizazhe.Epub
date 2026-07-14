@@ -1,4 +1,4 @@
-# 📚 Peizazhe.Epub
+# 📚 Peizazhe.Epub   [![pages-build-deployment](https://github.com/OrgesKreka/Peizazhe.Epub/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/OrgesKreka/Peizazhe.Epub/actions/workflows/pages/pages-build-deployment)
 
 **Peizazhe.Epub** është një program që arkivon dhe konverton automatikisht artikujt e platformës prestigjioze ["Peizazhe të fjalës"](https://peizazhe.com/) në formatin **ePub**. Qëllimi është t'u mundësohet lexuesve t'i shijojnë këto shkrime në pajisjet e-Reader (Kindle, Kobo, etj.) ose dhe ne telefon e kompjuter por me shume pak shperqendrime.
 
